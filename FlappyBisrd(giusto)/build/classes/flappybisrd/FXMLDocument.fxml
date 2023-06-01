@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="schermo" onKeyTyped="#inputFinestra" pickOnBounds="false" prefHeight="499.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flappybisrd.FXMLDocumentController">
+   <children>
+      <ImageView fx:id="sfondo" fitHeight="475.0" fitWidth="707.0" pickOnBounds="true">
+         <image>
+            <Image url="@../sfondo.png" />
+         </image>
+      </ImageView>
+      
+      <Button fx:id="bottone" layoutX="-143" layoutY="20.0" onAction="#ciao" prefHeight="19.0" prefWidth="27.0" />
+      <Label fx:id="inizio" alignment="CENTER" layoutX="95.0" layoutY="77.0" prefHeight="119.0" prefWidth="518.0" text="Spazio per iniziare">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="pausa" alignment="CENTER" layoutX="231.0" layoutY="50" prefHeight="55.0" prefWidth="236.0" text="Pausa" visible="false">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label fx:id="pausaScore" layoutX="189.0" layoutY="196.0" prefHeight="44.0" prefWidth="175.0" text="Score: " visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="maxScore" layoutX="237.0" layoutY="318.0" prefHeight="38.0" prefWidth="212.0" text="Max Score: ">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="erba" arcHeight="5.0" arcWidth="5.0" fill="#4ec940" height="30.0" layoutY="469.0" stroke="BLACK" strokeType="INSIDE" width="707.0" />
+      <Label fx:id="gameOver" alignment="CENTER" layoutX="114.0" layoutY="97.0" prefHeight="79.0" prefWidth="471.0" text="GAME OVER" visible="false">
+         <font>
+            <Font name="Calibri" size="68.0" />
+         </font>
+      </Label>
+      
+   </children>
+</AnchorPane>

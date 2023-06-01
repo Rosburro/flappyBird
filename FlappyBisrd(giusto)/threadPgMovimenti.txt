@@ -1,0 +1,87 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package flappybisrd;
+
+import javafx.concurrent.Task;
+import javafx.scene.image.ImageView;
+
+/**
+ *
+ * @author Roberto
+ */
+
+
+/*
+
+ho fatto tutto in un solo thread (quasto) poichè con due mi diceva che c'era un nulla pointer ad un arrayList
+nel thread "thread" che presumibilmente è quello della finesta (l'errore non sussisteva se si faceva partire solo uno dei due thread.
+quindi per comodità ho optato per farne solo uno.
+vorrei capire perchè non va.
+
+*/
+public class PlayerMovimenti extends Task{
+    private ImageView pg;
+    private boolean stop;
+    private boolean perso=false;
+    private int salto=0;
+    
+    PlayerMovimenti(ImageView pg){
+        this.pg=pg;
+    }
+    
+    @Override
+    public Object call() {
+         while(!perso) {//fa muovere il pg
+            try{
+            if(salto>0)pg.setRotate(-40);// così l'animazione è più fluida; magari fare che fa uno scattino tra le rotazioni cos' che sembri non troppo statico
+            
+            while(salto>0){
+                pg.setLayoutY(pg.getLayoutY()-1.2);
+                salto--;
+                try {
+                    Thread.sleep(4);
+                } catch (InterruptedException ex) {}
+            }
+            //parte in cui cade
+            try {
+                Thread.sleep(3);
+            } catch (InterruptedException ex) {}
+            
+            if(salto<=-30){
+                pg.setLayoutY(pg.getLayoutY()+1.3);//2 ci sta
+                if(pg.getRotate()<50){
+                pg.setRotate(pg.getRotate()+1);
+                }
+            }else{
+                salto--;
+            }
+            }catch(Exception e){}
+        }
+         return null;
+    }
+
+    
+    public void stopp(){
+        stop=true;
+    }
+    
+    public void ricomincia(){
+        stop=false;
+    }
+    
+    public void perso(){
+        perso = true;
+    }
+    
+    
+    public boolean isStopped(){return stop;}
+    
+    public void salto(){
+        salto=50;
+    }
+
+    
+    
+}
